@@ -36,21 +36,40 @@
             <li> <a href="Profil.html">Profil</a></li>
         </ul>
     </nav>
-      <section class="hero">
-    <div class="hero-content">
-        <h1>Balatoni Vityilló</h1>
-        <p>Ha a Balaton a szíved csücske, legyen a vityillódra mindenki büszke!</p>
-
-        <div class="hero-buttons">
-            <a href="login.html" class="btn secondary">Bejelentkezés</a>
-            <a href="register.html" class="btn primary">Regisztráció</a>
-        </div>
-    </div>
-</section>
+    <h1>Balatoni Vityilló</h1>
     <main>
-        
-     
-        
+        <h3>Ingatlan eladás oldal</h3> 
+        <div class="card">
+            <input type="text" id="elocation" class="form-control" placeholder="Lokáció" required><br>
+            <input type="number" id="erooms" class="form-control" placeholder="Szobák száma" required><br>
+            <input type="number" id="earea" class="form-control" placeholder="Alapterület (m²)" required><br>
+            <input type="number" id="eprice" class="form-control" placeholder="Eladási ár (Ft)" required><br>
+            <button onclick="mentesEsNavigalas()">Eladás</button>
+        </div>
     </main>
+
+    <script>
+        function mentesEsNavigalas() {
+            // Adatok objektumba gyűjtése
+            const ingatlan = {
+                hely: document.getElementById('elocation').value,
+                szobak: document.getElementById('erooms').value,
+                terulet: document.getElementById('earea').value,
+                ar: document.getElementById('eprice').value
+            };
+
+            // Ellenőrizzük, hogy minden mező ki van-e töltve
+            if (!ingatlan.hely || !ingatlan.szobak || !ingatlan.terulet || !ingatlan.ar) {
+                alert("Kérjük, töltsön ki minden mezőt!");
+                return;
+            }
+
+            // Mentés a böngésző memóriájába
+            localStorage.setItem('ujIngatlan', JSON.stringify(ingatlan));
+
+            // Átirányítás a listázó oldalra
+            window.location.href = "Vetel.html";
+        }
+    </script>
 </body>
 </html>
