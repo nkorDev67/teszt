@@ -32,14 +32,80 @@
                     <a href="Felujitaskerese.html">Felújítás kérése</a>
                 </div>
             </li>
-            <li> <a href="Beosztas.html">(Ember függő) Beosztás</a></li>   
+            <li> <a href="Beosztas.html">Beosztás</a></li>   
             <li> <a href="Profil.html">Profil</a></li>
         </ul>
     </nav>
+    
     <h1>Balatoni Vityilló</h1>
-    <main>
-        <h3>This is the beosztas</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt necessitatibus quas laudantium earum minima, eos amet quidem sint voluptate, voluptas consequuntur provident nemo officiis quo ea veniam fugit perspiciatis temporibus.   </p>
+    
+    <main class="container mt-4">
+        <div id="beosztas-kontener">
+            <div class="text-center">
+                <p>Adatok betöltése...</p>
+            </div>
+        </div>
     </main>
+
+    <script>
+        // Ez szimulálja a bejelentkezett felhasználót és a beosztást
+        const bejelentkezettFelhasznalo = {
+            szerepkor: "munkas", // Itt lehetne 'ugyfel' is
+            nev: "Kovács János"
+        };
+
+        // Szimulált beosztás adatok
+        const munkak = [
+            {
+                tipus: "Festés",
+                cim: "8600 Siófok, Petőfi sétány 12.",
+                kezdet: "2024.05.20. 08:00",
+                vege: "2024.05.22. 16:00"
+            }
+        ];
+
+        function beosztasMegjelenites() {
+            const kontener = document.getElementById('beosztas-kontener');
+            
+            if (bejelentkezettFelhasznalo.szerepkor === "munkas") {
+                let html = `
+                    <div class="card shadow border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="mb-0">Aktuális Beosztásod</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Üdvözöljük, <strong>${bejelentkezettFelhasznalo.nev}</strong>! Az alábbi felújítási munkára vagy beosztva:</p>
+                            <hr>
+                            ${munkak.map(munka => `
+                                <div class="mb-3 p-3 bg-light rounded border-start border-4 border-success">
+                                    <h4 class="text-success">${munka.tipus}</h4>
+                                    <p><strong>Helyszín:</strong> ${munka.cim}</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><strong>Munkavégzés kezdete:</strong><br> ${munka.kezdet}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><strong>Várható befejezés:</strong><br> ${munka.vege}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                kontener.innerHTML = html;
+            } else {
+                kontener.innerHTML = `
+                    <div class="alert alert-info text-center">
+                        <h3>Nincs aktív munkabeosztásod.</h3>
+                        <p>Ez az oldal csak munkatársaink számára érhető el.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Oldal betöltésekor futtatjuk
+        window.onload = beosztasMegjelenites;
+    </script>
 </body>
 </html>

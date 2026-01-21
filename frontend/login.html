@@ -37,20 +37,20 @@
         </ul>
     </nav>
     <section class="hero">
-        <div class="hero-content">
-            
-            
+    <div class="hero-content">
         <h1>Bejelentkezés:</h1>
         <br>
-        <input type="text" class="inputmezo form-control" name="email" placeholder="Email" required><br><br>
+        <form onsubmit="event.preventDefault(); location.href='Profil.html';">
+        <input type="text" class="inputmezo form-control" name="login_identity" placeholder="Email vagy telefonszám" required><br><br>
         <input type="password" class="inputmezo form-control" name="pw" placeholder="Jelszó" required><br><br>
+        
         <input type="submit" class="gomb form-control" name="belepes" value="Belépés">
+        </form>
         <br>
         <button onclick="location.href='register.html'" class="btn secondary">Még nincs fiókom</button>
         <button onclick="location.href='HomePage.html'" class="btn primary">Vissza a főoldalra</button>
-      
-        </div>
-    </section>
+    </div>
+</section>
     <main>
         
      
