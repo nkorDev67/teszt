@@ -11,6 +11,12 @@ h1{
     margin-top: 30px;
 
 }
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1100;
+}
 .navbar ul {
     list-style-type: none;
     background-color: hsl(17, 68%, 44%);
@@ -399,12 +405,12 @@ margin-right: auto;
 .admin-sidebar {
     position: fixed;     /* Ez fixálja le az oldalon */
     left: 0;
-    top: 150px;           /* Itt hagysz helyet a felső navbarnak (állítsd be a magasságát!) */
+    top: 60px;           /* Itt hagysz helyet a felső navbarnak (állítsd be a magasságát!) */
     width: 250px;
-    height: 70vh; /* A teljes magasság mínusz a felső navbar */
+    height: calc(100vh - 60px); /* A teljes magasság mínusz a felső navbar */
     background-color: #2c3e50;
     color: white;
-    z-index: 500;        /* Alacsonyabb legyen, mint a navbar, ha az is fix */
+    z-index: 1000;        /* Alacsonyabb legyen, mint a navbar, ha az is fix */
     overflow-y: auto;    /* Ha sok a gomb, lehessen benne görgetni */
 }
 
@@ -431,4 +437,55 @@ margin-right: auto;
     margin-left: 250px; /* Pontosan a sidebar szélessége */
     margin-top: 20px;   /* Egy kis távolság a felső navbartól */
     padding: 20px;
+}
+.worker-box{
+    height: 400px;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.worker-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.5fr;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.worker-row:last-child {
+  border-bottom: none;
+}
+#addWorkerbtn {
+    background-color: #129ddd;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    display: left;
+    margin: 20px auto;
+}
+.modal {
+    position: fixed;
+    inset: 0; /* top, right, bottom, left = 0 */
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.hidden {
+    display: none;
 }
